@@ -1,0 +1,37 @@
+# Draft of the recipe for F-Droid's fdroiddata repository
+# (metadata/org.bps.companion.yml there). Not used by the build itself.
+#
+# Before submitting: fill in the repository URL and the release commit, and
+# check the build on F-Droid's build server image with `fdroid build`.
+# Descriptions and changelogs are read from app/fastlane/.
+
+Categories:
+  - Money
+License: MIT
+SourceCode: https://github.com/Catipal/companion-app
+IssueTracker: https://github.com/Catipal/companion-app/issues
+
+AutoName: BPS Companion
+
+RepoType: git
+Repo: https://github.com/Catipal/companion-app
+
+Builds:
+  - versionName: '0.1.0'
+    versionCode: 1
+    commit: <the release commit>
+    subdir: app
+    sudo:
+      - apt-get update
+      - apt-get install -y ninja-build cmake openjdk-21-jdk-headless
+    output: ../../bps-mobile/out/bps-companion-arm64-v8a-unsigned.apk
+    ndk: r28c
+    build:
+      - export WORK=$PWD/../../bps-mobile
+      - export ANDROID_SDK_ROOT=$$SDK$$ NDK_VERSION=28.2.13676358
+      - ../tools/android.sh arm64-v8a
+
+AutoUpdateMode: None
+UpdateCheckMode: None
+CurrentVersion: '0.1.0'
+CurrentVersionCode: 1
