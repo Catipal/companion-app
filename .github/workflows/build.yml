@@ -101,6 +101,13 @@ jobs:
           flatpak build-bundle repo bps-companion-x86_64.flatpak org.bps.companion \
             --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo
 
+      - name: AppStream's report, if the build failed
+        if: failure()
+        run: |
+          appstreamcli --version
+          appstreamcli compose --print-report=full --prefix=/ --origin=org.bps.companion             --result-root=build/files --data-dir=/tmp/as --icons-dir=/tmp/as/icons             --components=org.bps.companion,org.bps.companion.desktop build/files || true
+          find build/files/share -maxdepth 3 | sort
+
       - uses: actions/upload-artifact@v4
         with:
           name: bps-companion-x86_64-flatpak
