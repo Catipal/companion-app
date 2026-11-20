@@ -14,11 +14,19 @@
       a lockout.
     </p>
     <p>
-      The app reaches the relay through three other relays, so none of them,
-      and nobody watching your home connection, learns where the device is.
-      It holds only a key of its own, which can spend nothing by itself.
+      When your relay is listed as a relay, the app reaches it through three
+      other relays, so none of them, and nobody watching your home
+      connection, learns where the device is. Otherwise it connects straight
+      to your relay: on the same network, or from anywhere through a
+      forwarded port. It holds only a key of its own, which can spend
+      nothing by itself.
     </p>
   </description>
+  <developer id="org.bps">
+    <name>The BPS Companion developers</name>
+  </developer>
+  <url type="homepage">https://github.com/Catipal/companion-app</url>
+  <url type="bugtracker">https://github.com/Catipal/companion-app/issues</url>
   <launchable type="desktop-id">org.bps.companion.desktop</launchable>
   <icon type="stock">org.bps.companion</icon>
   <categories>
@@ -39,6 +47,6 @@
     <content_attribute id="money-purchasing">mild</content_attribute>
   </content_rating>
   <releases>
-    <release version="0.1" date="2026-11-06"/>
+    <release version="0.1.0" date="2026-11-20"/>
   </releases>
 </component>
